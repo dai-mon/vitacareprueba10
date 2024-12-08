@@ -1,0 +1,320 @@
+/* Diseño de fondo */
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #26648b, #3333ad); /* Fondo minimalista */
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Evita el desplazamiento no deseado */
+    flex-direction: column; /* Se asegura que el contenido se apile verticalmente */
+    box-sizing: border-box; /* Para asegurarse de que el padding y el borde no desborden */
+}
+
+/* Contenedor principal */
+.app-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    min-height: 100vh; /* Asegura que ocupe todo el alto de la ventana */
+    padding: 20px 0px 0px 0px; /* Espacio superior */
+    overflow: hidden;
+    animation: floatAnimation 2s ease-in-out infinite; /* Animación flotante */
+    margin-top: -60px; /* Incrementa el valor negativo para subir más */
+}
+/* Estilo general para dispositivos móviles */
+@media (max-width: 768px) {
+    .app-container {
+        padding: 10px 0; /* Reduce el padding */
+        gap: 5px; /* Reduce el espacio entre elementos */
+        margin-top: -30px; /* Ajusta la posición para móviles */
+        animation: none; /* Opcional: elimina la animación si no es necesaria */
+    }
+
+    /* Asegúrate de que el texto sea legible en pantallas pequeñas */
+    .app-container h1 {
+        font-size: 1.5rem; /* Ajusta el tamaño del título */
+    }
+
+    .app-container .btn {
+        font-size: 1rem; /* Reduce el tamaño de los botones */
+        padding: 8px 12px; /* Ajusta el espacio interior del botón */
+    }
+
+    .image-container img {
+        width: 80%; /* Ajusta el tamaño de la imagen al ancho del contenedor */
+        height: auto;
+    }
+
+    .form-group input {
+        font-size: 0.9rem; /* Reduce el tamaño de texto en los inputs */
+    }
+
+    #userMenu {
+        width: 100%; /* Ocupa todo el ancho en móviles */
+        border-radius: 0; /* Quita el borde redondeado */
+    }
+}
+
+/* Estilo más específico para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .app-container {
+        gap: 3px; /* Reduce aún más el espacio entre elementos */
+        margin-top: -20px;
+    }
+
+    .app-container h1 {
+        font-size: 1.2rem;
+    }
+
+    .form-group input {
+        padding: 8px; /* Reduce el padding en los inputs */
+    }
+
+    #userMenu {
+        font-size: 0.9rem; /* Ajusta el texto del menú */
+    }
+}
+
+
+/* Animación de aparición del título */
+@keyframes fadeInTitle {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Título VitaCare */
+h1.title {
+    color: #fff;
+    font-size: 76px; /* Tamaño aumentado */
+    margin-bottom: 0px; /* Separa más el título del contenedor de inicio de sesión */
+    animation: fadeInTitle 2s ease-out; /* Animación suave de aparición */
+}
+
+/* Ajustes responsivos para pantallas pequeñas */
+@media (max-width: 768px) {
+    h1.title {
+        font-size: 48px; /* Reduce el tamaño del título en móviles */
+        margin-bottom: 20px; /* Aumenta la separación entre el título y el formulario */
+    }
+}
+
+.parrafo{
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+/* Contenedor de la tarjeta de inicio de sesión */
+.card {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco suave */;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    border-radius: 10px; /* Esquinas redondeadas */
+    max-width: 400px; /* Ancho máximo */
+    width: 100%; /* Ancho adaptable */
+    text-align: center; /* Centra el texto dentro */
+}
+
+/* Animación de flotación */
+@keyframes floatAnimation {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Títulos */
+h1 {
+    color: #fff;
+    font-size: 40px; /* Tamaño aumentado */
+    margin-top: 20px;
+    text-align: center;
+    animation: textPopIn 1s ease-out;
+}
+
+/* Estilo para el título "Recuperar Contraseña" */
+h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+    animation: textPopIn 0s ease-out;
+}
+
+/* Títulos */
+h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 100px; /* Incremento del tamaño de la fuente */
+}
+
+/* Animación de texto */
+@keyframes textPopIn {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* Estilo de los campos de formulario */
+.form-group {
+    margin-bottom: 15px;
+    position: relative; /* Necesario para posicionar el icono dentro del input */
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px; /* Incremento en el tamaño del padding */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 18px; /* Letras más grandes */
+    box-sizing: border-box;
+}
+
+/* Estilo para el icono del ojo */
+.toggle-icon {
+    position: absolute;
+    right: 15px; /* Ajusta para que el icono esté a la derecha */
+    top: 50%;
+    transform: translateY(-50%); /* Centra verticalmente el icono */
+    cursor: pointer;
+}
+
+/* Agrega algo de espacio en el campo de entrada para el icono */
+.form-group input[type="password"], 
+.form-group input[type="text"] {
+    padding-right: 40px; /* Añadido para que no se sobreponga el icono */
+}
+
+/* Contenedor para los campos de contraseña */
+.password-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Icono de mostrar/ocultar contraseña */
+
+/* Estilo del botón */
+.btn {
+    background-color: #e63946; /* Color rojo del botón */
+    color: white; /* Texto blanco */
+    font-size: 1rem; /* Tamaño de fuente moderado */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor estilo mano */
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    max-width: 300px; /* Límite de ancho */
+}
+
+.btn:hover {
+    background-color: #e63939; /* Color más oscuro al pasar el cursor */
+}
+
+
+
+/* Estilo de los enlaces */
+.links {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.links a {
+    color: #e63946;
+    text-decoration: none;
+    font-size: 18px; /* Tamaño de texto ajustado */
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+
+/* Responsive Ajustes */
+
+/* Para pantallas medianas (tabletas) */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    .card {
+        padding: 15px;
+        max-width: 90%; /* Reducción del tamaño de la tarjeta */
+    }
+
+    .btn {
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    .form-group input {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 14px;
+    }
+
+    .card {
+        padding: 10px;
+        max-width: 95%; /* Mayor flexibilidad en móviles */
+    }
+
+    .btn {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .form-group input {
+        padding: 8px;
+        font-size: 12px;
+    }
+}
+
+ /* Estilo del mensaje emergente */
+ #messageBox {
+    position: fixed;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #e63946; /* Rojo */
+    color: white;
+    padding: 15px 15px;
+    border-radius: 10px;
+    font-size: 18px;
+    text-align: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    display: none;
+}
+
+#messageBox.visible {
+    opacity: 1;
+    display: block;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+#messageBox.hidden {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+}

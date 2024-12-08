@@ -1,0 +1,1491 @@
+:root {
+    --primary: #1d3557;
+    --accent: #e63946;
+    --light: #f1faee;
+    --secondary: #457b9d;
+    --background: #f8f9fa;
+    --dark-background: #121212;
+    --dark-text: #f1f1f1;
+    --dark-card: #1e1e1e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background-color: var(--background);
+    color: var(--primary);
+    line-height: 1.6;
+    max-width: 480px;
+    margin: 0 auto;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-width: 480px;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode {
+    background-color: var(--dark-background);
+    color: var(--dark-text);
+}
+
+.dark-mode .app-container {
+    background-color: var(--dark-card);
+}
+
+/* Navigation */
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: var(--primary);
+    color: white;
+}
+
+.dark-mode .app-header {
+    background-color: #0f2027;
+}
+
+.app-header .logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.app-header .actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.app-header .actions button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Asegurarse de que el contenido principal tenga margen inferior */
+main {
+    padding-bottom: 70px;
+    /* Altura suficiente para que no cubra el menú */
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    /* Color de fondo */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+.dark-mode .bottom-nav {
+    background-color: var(--dark-card);
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.bottom-nav-item.active {
+    color: var(--accent);
+}
+
+.dark-mode .bottom-nav-item {
+    color: var(--light);
+}
+
+.dark-mode .bottom-nav-item.active {
+    color: var(--accent);
+}
+
+/* Content Sections */
+.app-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+
+/* Card Styles */
+.card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 15px;
+    min-height: 400px;
+    /* Define una altura mínima */
+    display: flex;
+    flex-direction: column;
+
+
+}
+/* Card Styles */
+.card1 {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 15px;
+    min-height: 00px;
+    /* Define una altura mínima */
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.dark-mode .card {
+    background-color: #2c2c2c;
+    color: var(--dark-text);
+}
+
+/* Sección de Mood */
+#moodSection {
+    padding: 20px;
+    /* Añadimos algo de relleno alrededor */
+}
+
+.mood-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    /* Añadimos margen en la parte inferior para separar del contenido siguiente */
+    text-align: center;
+    /* Alineamos el título al centro */
+}
+
+/* Mood Tracker */
+.mood-tracker {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+    /* Añadimos espacio adicional entre las tarjetas y el historial */
+}
+
+.mood-card {
+    flex: 1;
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: var(--light);
+    cursor: pointer;
+    transition: transform 0.2s;
+    min-width: 100px;
+    max-width: 200px;
+    box-sizing: border-box;
+}
+
+.mood-card:active {
+    transform: scale(0.95);
+}
+
+/* Estilos para la historia de estados de ánimo */
+.history {
+    margin-top: 20px;
+}
+
+.history h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#moodHistory {
+    list-style: none;
+    padding: 0;
+}
+
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .mood-tracker {
+        flex-direction: column;
+        /* Cambiar a columna en pantallas pequeñas */
+        align-items: center;
+        /* Centrar las tarjetas */
+    }
+
+    .mood-card {
+        width: 80%;
+        /* Asegura que las tarjetas ocupen un porcentaje adecuado */
+        margin-bottom: 10px;
+        /* Añade espacio entre las tarjetas */
+    }
+}
+
+@media (max-width: 480px) {
+    .mood-card {
+        width: 100%;
+        /* En pantallas más pequeñas, cada tarjeta ocupa el 100% del ancho */
+    }
+}
+/* Modo Oscuro */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.dark-mode .app-header {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+.dark-mode .card,
+.dark-mode .card1 {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+.dark-mode .btn {
+    background-color: #2c2c2c;
+    color: #ffffff;
+}
+
+.dark-mode .bottom-nav {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+.dark-mode .bottom-nav-item {
+    color: #ffffff;
+}
+
+.dark-mode input,
+.dark-mode select,
+.dark-mode textarea {
+    background-color: #2c2c2c;
+    color: #ffffff;
+    border: 1px solid #444;
+}
+
+
+.dark-mode .mood-card {
+    background-color: #3c3c3c;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+    body {
+        max-width: 100%;
+    }
+
+    .app-container {
+        width: 100%;
+        height: 100vh;
+    }
+}
+
+#menuRecommendations {
+    background-color: var(--light);
+    text-align: center;
+}
+
+#progressChart {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+
+
+}
+
+/* Estilo para Inicio de Sesión */
+#loginSection .card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.dark-mode #loginSection .card {
+    background-color: var(--dark-card);
+    color: var(--dark-text);
+}
+
+#loginSection h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+.dark-mode #loginSection h2 {
+    color: var(--light);
+}
+
+#loginSection .form-group {
+    margin-bottom: 15px;
+}
+
+#loginSection .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: var(--light);
+}
+
+.dark-mode #loginSection .form-group input {
+    background-color: #3c3c3c;
+    color: var(--dark-text);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#loginSection .btn {
+    background-color: var(--accent);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+#loginSection .btn:hover {
+    background-color: #d62839;
+}
+
+.dark-mode #loginSection .btn {
+    background-color: var(--accent);
+}
+
+#loginSection .links {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+#loginSection .links a {
+    color: var(--secondary);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#loginSection .links a:hover {
+    text-decoration: underline;
+}
+
+/* Oculta el menú inferior y el encabezado cuando la sección activa es loginSection */
+#loginSection.active~.app-header,
+#loginSection.active~.bottom-nav {
+    display: none;
+}
+
+/* Oculta el encabezado solo en el apartado de inicio de sesión */
+#loginSection.active~.app-header {
+    display: none;
+}
+
+/* Centra el recuadro de inicio de sesión más abajo */
+#loginSection.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Ocupa toda la altura de la pantalla */
+    padding-top: 50px;
+    /* Ajusta la distancia desde la parte superior */
+}
+
+#loginSection .login-form {
+    width: 100%;
+    max-width: 350px;
+    /* Ajusta el ancho máximo del formulario */
+    padding: 20px;
+    background-color: var(--light);
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#messageBox {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #007BFF;
+    /* Azul */
+    color: white;
+    padding: 15px 30px;
+    border-radius: 10px;
+    /* Esquinas redondeadas */
+    font-size: 18px;
+    text-align: center;
+    z-index: 1000;
+    opacity: 0;
+    /* Oculto inicialmente */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    /* Animación de suavizado */
+    display: none;
+}
+
+#messageBox.visible {
+    opacity: 1;
+    /* Aparece gradualmente */
+    display: block;
+    transform: translate(-50%, -50%) scale(1.1);
+    /* Leve zoom al aparecer */
+}
+
+#messageBox.visible.hidden {
+    opacity: 0;
+    /* Se desvanece gradualmente */
+    transform: translate(-50%, -50%) scale(0.9);
+    /* Leve contracción al desaparecer */
+}
+
+/* Estilo para la sección de Dieta y Control de Glucosa */
+#dietSection {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+#dietSection h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--primary);
+}
+
+#dietSection .form-group {
+    display: flex;
+    flex-direction: column;
+    /* Para apilar los elementos de arriba a abajo */
+    align-items: center;
+    /* Centra los elementos horizontalmente */
+    justify-content: center;
+    /* Centra los elementos verticalmente si el contenedor tiene altura suficiente */
+}
+
+#dietSection .form-group label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: var(--primary);
+}
+
+#dietSection .form-group input {
+    width: 45%;
+    /* Ajusta el ancho del input */
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: var(--light);
+    margin-bottom: 10px;
+    /* Añadir un pequeño margen para separar el input del botón */
+}
+
+#dietSection .form-group input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+#dietSection .btn {
+    width: 60;
+    /* Asegura que el botón tenga el mismo ancho que el input */
+    padding: 10px;
+    font-size: 1rem;
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0 auto;
+    /* Esto centra el botón dentro de su contenedor */
+}
+
+#dietSection .btn:hover {
+    background-color: #d62839;
+    background-color: #d62839;
+    /* Cambio de color al pasar el mouse */
+}
+
+/* Ajustes responsivos para pantallas pequeñas */
+@media (max-width: 768px) {
+    #dietSection .btn {
+        width: 60%; /* El botón ocupará el 80% del contenedor en pantallas pequeñas */
+        font-size: 0.9rem; /* Ajusta el tamaño de la fuente */
+    }
+}
+
+@media (max-width: 480px) {
+    #dietSection .btn {
+        width: 60%; /* El botón ocupará el 90% del contenedor en pantallas muy pequeñas */
+        font-size: 0.85rem; /* Ajusta el tamaño de la fuente aún más */
+    }
+}
+
+/* Estilo para el menú de recomendaciones */
+#menuRecommendations {
+    margin-top: 20px; 
+    background-color: var(--light);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-height: 00px;
+}
+
+#menuRecommendations h3 {
+    font-size: 1.25rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+#menuRecommendations #menuMessage {
+    font-size: 1rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+#mealRecommendations {
+    list-style-type: none;
+    padding: 0;
+}
+
+#mealRecommendations li {
+    font-size: 1rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+#mealRecommendations li span {
+    font-weight: bold;
+}
+
+/* Estilo para los emojis en las recomendaciones */
+#mealRecommendations li.emoji {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#mealRecommendations li.emoji span {
+    font-size: 1.25rem;
+}
+
+/* Modo Oscuro - Diet Section */
+.dark-mode #dietSection {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.dark-mode #dietSection .card1,
+.dark-mode #dietSection .card {
+    background-color: #1e1e1e;
+    color: #ffffff; /* Asegura que el texto dentro de las tarjetas sea blanco */
+}
+
+.dark-mode #dietSection .card1 h2 {
+    color: #ffffff; /* Título "Control de Glucosa" en blanco */
+}
+.dark-mode #dietSection .form-group label {
+    color: #ffffff; /* Texto blanco para las etiquetas */
+}
+
+.dark-mode #dietSection .form-group input {
+    background-color: #2c2c2c;
+    color: #ffffff; /* Texto blanco en el input */
+    border: 1px solid #444;
+}
+
+.dark-mode #dietSection .btn {
+    background-color: #2c2c2c;
+    color: #ffffff; /* Texto blanco en el botón */
+}
+
+.dark-mode #dietSection #menuRecommendations h3 {
+    color: #ffffff; /* Título en el menú recomendado en blanco */
+}
+
+.dark-mode #dietSection #menuRecommendations #menuMessage {
+    color: #ffffff; /* Texto en el mensaje en blanco */
+}
+
+.dark-mode #dietSection #mealRecommendations li {
+    background-color: #3c3c3c;
+    color: #ffffff; /* Texto blanco para cada recomendación */
+}
+
+#dietSection .btn {
+    background-color: var(--accent); /* Color de fondo para el botón (acento) */
+    color: white; /* Texto blanco en el botón */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor en forma de mano */
+    font-size: 1rem; /* Tamaño de la fuente */
+    transition: background-color 0.3s; /* Efecto de transición en el cambio de color */
+}
+
+#dietSection .btn:hover {
+    background-color: #d62839; /* Color de fondo cuando se pasa el mouse por encima */
+}
+
+/* Aplicar estilo del modo oscuro también a los botones dentro de dietSection */
+.dark-mode #dietSection .btn {
+    background-color: var(--accent); /* Mantener el color de fondo */
+}
+
+
+.history {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    /* Bordes ligeros */
+    border-radius: 10px;
+    /* Bordes redondeados */
+    padding: 15px;
+    /* Espaciado interno */
+    background-color: var(--light);
+    /* Fondo suave */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Sombra para darle profundidad */
+    margin-top: 20px;
+    /* Espaciado hacia arriba */
+}
+
+.history h3 {
+    font-size: 1.25rem;
+    /* Ajusta el tamaño del título */
+    margin-bottom: 10px;
+    /* Espacio entre el título y el contenido */
+    color: var(--primary);
+    /* Color principal */
+}
+
+.history ul {
+    list-style-type: disc;
+    /* Estilo de viñetas */
+    margin-left: 20px;
+    /* Indentación del listado */
+    padding: 0;
+    /* Elimina el padding predeterminado */
+}
+
+.history ul li {
+    font-size: 1rem;
+    /* Ajusta el tamaño del texto */
+    color: #333;
+    /* Color del texto */
+    margin-bottom: 5px;
+    /* Espaciado entre elementos del listado */
+}
+
+/* Estilo para la sección de consejo de salud  */
+#healthSection {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+#healthSection h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--primary);
+}
+
+#healthSection .form-group {
+    display: flex;
+    flex-direction: column;
+    /* Para apilar los elementos de arriba a abajo */
+    align-items: center;
+    /* Centra los elementos horizontalmente */
+    justify-content: center;
+    /* Centra los elementos verticalmente si el contenedor tiene altura suficiente */
+}
+
+#healthSection .form-group label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: var(--primary);
+}
+
+#healthSection .form-group input {
+    width: 45%;
+    /* Ajusta el ancho del input */
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: var(--light);
+    margin-bottom: 10px;
+    /* Añadir un pequeño margen para separar el input del botón */
+}
+
+#healthSection .form-group input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+#healthSection .btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0 auto;
+    /* Centra horizontalmente el botón */
+    display: block;
+    /* Asegura que el botón se comporte como un bloque */
+}
+
+
+#healthSection .btn:hover {
+    background-color: #d62839;
+    background-color: #d62839;
+    /* Cambio de color al pasar el mouse */
+}
+
+/* Estilo para el menú de recomendaciones */
+#Recomendaciones {
+    margin-top: 20px;
+    background-color: var(--light);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    min-height: 00px;
+}
+
+#Recomendaciones h3 {
+    font-size: 1.25rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#Recomendaciones #healthMessage {
+    font-size: 1rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+#healthRecommendations {
+    list-style-type: none;
+    padding: 0;
+}
+
+#healthRecommendations li {
+    font-size: 1rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+#healthRecommendationss li span {
+    font-weight: bold;
+}
+
+/* Estilo para los emojis en las recomendaciones */
+#healthRecommendations li.emoji {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#healthRecommendations li.emoji span {
+    font-size: 1.25rem;
+}
+
+/* Modo Oscuro - Health Section */
+.dark-mode #healthSection {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.dark-mode #healthSection .card1,
+.dark-mode #healthSection .card {
+    background-color: #1e1e1e;
+    color: #ffffff; /* Asegura que el texto dentro de las tarjetas sea blanco */
+}
+
+.dark-mode #healthSection .card1 h2 {
+    color: #ffffff; /* Título "Consejos de Salud" en blanco */
+}
+
+.dark-mode #healthSection .form-group label {
+    color: #ffffff; /* Texto blanco para las etiquetas */
+}
+
+.dark-mode #healthSection .form-group input {
+    background-color: #2c2c2c;
+    color: #ffffff; /* Texto blanco en el input */
+    border: 1px solid #444;
+}
+
+.dark-mode #healthSection .btn {
+    background-color: #d62839; 
+    color: #ffffff; /* Texto blanco en el botón */
+}
+
+.dark-mode #healthSection .btn:hover {
+    background-color: #d62839; /* Un tono ligeramente más oscuro para el hover */
+}
+
+.dark-mode #healthSection #Recomendaciones h3 {
+    color: #ffffff; /* Título en los consejos en blanco */
+}
+
+.dark-mode #healthSection #healthMessage {
+    color: #ffffff; /* Texto en el mensaje de consejos en blanco */
+}
+
+.dark-mode #healthSection #healthRecommendations li {
+    background-color: #3c3c3c;
+    color: #ffffff; /* Texto blanco para cada recomendación */
+}
+
+
+canvas {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+}
+
+
+canvas {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+}
+
+/* Estilo general para la sección de bienvenida */
+#welcome-section {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    /* Degradado verde moderno */
+    padding: 40px 20px;
+    border-radius: 20px;
+    /* Bordes redondeados */
+    text-align: center;
+    color: #ffffff;
+    /* Texto blanco */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    /* Sombra moderna */
+    margin: 20px auto;
+    max-width: 1000px;
+    animation: fadeIn 1s ease-in-out;
+    /* Animación de entrada */
+}
+
+/* Animación de aparición */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Título de bienvenida */
+.welcome-title {
+    font-size: 2.8rem;
+    font-family: 'Roboto', sans-serif;
+    /* Fuente moderna */
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.welcome-title .highlight {
+    color: #f1c40f;
+    /* Amarillo brillante */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Descripción */
+.welcome-description {
+    font-size: 1.2rem;
+    font-family: 'Roboto', sans-serif;
+    color: #ecf0f1;
+    /* Gris claro */
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Contenedor de imagen */
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.animated-image {
+    width: 60%;
+    /* Imagen al 60% del contenedor */
+    max-width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    /* Sombra más pronunciada */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.animated-image:hover {
+    transform: scale(1.1);
+    /* Efecto de zoom */
+    opacity: 0.9;
+    /* Ligera transparencia */
+}
+
+/* Responsive: ajusta el diseño para pantallas pequeñas */
+@media (max-width: 768px) {
+    .welcome-title {
+        font-size: 2rem;
+    }
+
+    .welcome-description {
+        font-size: 1rem;
+    }
+
+    .animated-image {
+        width: 80%;
+    }
+}
+
+/* Sección de Bienvenida */
+#welcome-section {
+    background: transparent;
+    /* Fondo transparente */
+    padding: 40px 20px;
+    text-align: center;
+    color: #333;
+    /* Color de texto oscuro para mejor legibilidad */
+    margin: 20px auto;
+    max-width: 1000px;
+}
+
+/* Título de bienvenida */
+.welcome-title {
+    font-size: 2.8rem;
+    font-family: 'Inter', sans-serif;
+    /* Fuente moderna */
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.welcome-title .highlight {
+    color: #007bff;
+    /* Color de acento */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Descripción */
+.welcome-description {
+    font-size: 1.2rem;
+    font-family: 'Inter', sans-serif;
+    color: #555;
+    /* Gris oscuro */
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+
+/* Responsive: ajusta el diseño para pantallas pequeñas */
+@media (max-width: 768px) {
+    .welcome-title {
+        font-size: 2rem;
+    }
+
+    .welcome-description {
+        font-size: 1rem;
+    }
+
+    .animated-image {
+        width: 80%;
+    }
+}
+
+/* Contenedor general del carrusel */
+.carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+    /* Adaptado a pantalla completa */
+    max-width: 800px;
+    margin: 20px auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    /* Sombra moderna */
+    background-color: #ffffff;
+}
+
+/* Carrusel interno */
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 300%;
+    /* Para contener todas las imágenes horizontalmente */
+}
+
+/* Estilo de las imágenes */
+.carousel-image {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+/* Contenedor general del carrusel */
+.carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+    position: relative;
+}
+
+/* Carrusel interno */
+.carousel {
+    display: flex;
+    width: 300%;
+    /* Para contener todas las imágenes horizontalmente */
+    animation: slide 15s infinite;
+    /* Animación de desplazamiento */
+}
+
+/* Estilo de las imágenes */
+.carousel-image {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+/* Indicadores opcionales */
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.carousel-indicator {
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+/* Modo Oscuro - Descripción de Bienvenida */
+body.dark-mode .welcome-description {
+    color: #ffffff; /* Cambia el color del texto a blanco */
+}
+
+/* Modo Oscuro - Sección de Bienvenida */
+body.dark-mode #welcome-section {
+    background-color: #121212; /* Fondo oscuro para la sección */
+    color: #ffffff; /* Color de texto claro */
+}
+
+body.dark-mode #welcome-section .welcome-title,
+body.dark-mode #welcome-section .feature-list {
+    color: #ffffff; /* Títulos y listas en blanco */
+}
+
+body.dark-mode .highlight {
+    color: #1e90ff; /* Resaltar el texto "VitaCare" con un color brillante */
+}
+
+body.dark-mode .carousel-container {
+    background-color: #1e1e1e; /* Fondo oscuro para el carrusel */
+    padding: 20px;
+}
+
+body.dark-mode .carousel .carousel-image {
+    border-radius: 10px; /* Bordes redondeados en las imágenes */
+    filter: brightness(0.7); /* Reducir el brillo de las imágenes en modo oscuro */
+}
+
+
+/* Animación */
+@keyframes slide {
+
+    0%,
+    20% {
+        transform: translateX(0);
+    }
+
+    33%,
+    53% {
+        transform: translateX(-100%);
+    }
+
+    66%,
+    86% {
+        transform: translateX(-200%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Estilos para la lista de características */
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Espaciado entre los elementos */
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+    /* Animación al cargar */
+}
+
+.feature-list li {
+    background-color: #fff;
+    padding: 12px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    transform: translateY(30px);
+    /* Comienza desde abajo */
+    opacity: 0;
+    /* Comienza oculto */
+    animation: slideInUp 0.6s ease-out forwards;
+}
+
+/* Animación de desvanecimiento y desplazamiento hacia arriba */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    to {
+        transform: translateY(0);
+        /* Mueve el item a su posición original */
+        opacity: 1;
+    }
+}
+
+/* Añadir un efecto hover para mejorar la interacción */
+.feature-list li:hover {
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+}
+
+
+#progressChart {
+    max-height: 400px;
+    /* Limita la altura */
+    width: 100%;
+    /* Ocupa todo el ancho */
+    display: block;
+    /* Asegura un renderizado consistente */
+    width: 100%;
+    height: 300px;
+    display: block;
+
+}
+
+/* Modo oscuro - Ajustes específicos para la sección de progreso */
+.dark-mode #progressSection canvas {
+    background-color: #ffffff; /* Fondo blanco para la gráfica */
+    color: #000000; /* Texto negro en la gráfica, si aplica */
+}
+
+/* Inputs con texto negro */
+.dark-mode #progressSection .inputs input {
+    color: #000000; /* Texto negro */
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: var(--light); /* Fondo claro para la tabla */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+}
+table, th, td {
+    border: 1px solid var(--secondary);  
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+    font-size: 1rem; 
+}
+th {
+    background-color: var(--primary); /* Fondo para el encabezado */
+    color: white; /* Color de texto blanco para el encabezado */
+    font-weight: bold; /* Negrita para el encabezado */
+}
+tr:nth-child(even) {
+    background-color: var(--light); /* Fondo alternativo para filas pares */
+}
+
+tr:nth-child(odd) {
+    background-color: #ffffff; /* Fondo blanco para filas impares */
+}
+
+tr:hover {
+    background-color: var(--secondary); /* Color de fondo al pasar el mouse */
+    color: white; /* Cambiar el color del texto al pasar el mouse */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+/* Registros de la tabla con texto negro */
+.dark-mode #historySection #dataTable tbody tr td {
+    color: #000000; /* Texto negro */
+}
+
+.message {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    background: white;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    display: none;
+    z-index: 1000;
+    text-align: center;
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Animación de suavizado */
+    transform-origin: center;
+}
+.message.show {
+    display: block;
+}
+.message .actions {
+    margin-top: 10px;
+}
+.message .actions button {
+    margin: 5px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.message .confirm {
+    background-color: #f87171;
+    color: white;
+}
+.message .cancel {
+    background-color: #a5b4fc;
+    color: white;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.inputs input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid var(--secondary);
+    background-color: var(--light);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s;
+}
+
+.inputs input:focus {
+    border-color: var(--accent);
+    outline: none;
+}
+
+.boton {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--accent);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-bottom: 10px; /* Agrega espacio entre botones */
+
+}
+
+.boton:hover {
+    background-color: #d62839;
+}
+
+.boton:active {
+    transform: scale(0.98);
+}
+
+.eo {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--accent);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-bottom: px; /* Agrega espacio entre botones */
+
+}
+
+.eo:hover {
+    background-color: #d62839;
+}
+
+.eo:active {
+    transform: scale(0.98);
+}
+
+/* Modo oscuro para el mensaje de confirmación */
+.dark-mode .message {
+    background: #1e1e1e;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+}
+
+/* Modo oscuro para los botones de la ventana de confirmación */
+.dark-mode .message .confirm {
+    background-color: #d62839; /* Rojo oscuro */
+    color: white;
+}
+
+.dark-mode .message .cancel {
+    background-color: #4c6ef5; /* Azul más oscuro */
+    color: white;
+}
+
+/* Estilo para el botón de usuario */
+#userButton {
+    background: none; /* Sin fondo */
+    border: none; /* Sin borde */
+    color: white; /* Color del ícono */
+    font-size: 1.5rem; /* Tamaño del ícono */
+    cursor: pointer;
+    padding: 0;
+}
+
+/* Estilo para el menú desplegable */
+/* Estilo para el botón de usuario */
+#userButton {
+    background: none; /* Sin fondo */
+    border: none; /* Sin borde */
+    color: white; /* Color del ícono */
+    font-size: 1.5rem; /* Tamaño del ícono */
+    cursor: pointer;
+    padding: 0;
+}
+
+/* Estilo para el menú desplegable */
+#userMenu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #f3f3f3; /* Fondo claro por defecto */
+    color: #1e1e1e; /* Texto oscuro por defecto */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    z-index: 1000;
+    text-align: center;
+    width: 180px; /* Ajuste de ancho para el botón más largo */
+}
+
+/* Estilo para el botón de "Cerrar Sesión" */
+#userMenu button {
+    background: none; /* Sin fondo */
+    color: #1d3557; /* Color del texto por defecto */
+    border: none; /* Sin borde */
+    padding: 5px 0;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: Arial, sans-serif; /* Tipo de letra uniforme */
+    text-transform: capitalize; /* Formato de texto */
+}
+
+#userMenu button:hover {
+    color: #b22222; /* Cambio de color al pasar el cursor */
+}
+
+/* Modo oscuro */
+body.dark-mode #userMenu {
+    background-color: #1e1e1e; /* Fondo oscuro */
+    color: #e0e0e0; /* Texto claro */
+}
+
+body.dark-mode #userMenu button {
+    color: #e0e0e0; /* Texto claro en modo oscuro */
+}
+
+body.dark-mode #userMenu button:hover {
+    color: #ff6666; /* Color más claro al pasar el cursor en modo oscuro */
+}

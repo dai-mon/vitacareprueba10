@@ -1,0 +1,283 @@
+/* Diseño de fondo */
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #26648b, #3333ad); /* Fondo minimalista */
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    flex-direction: column; /* Se asegura que el contenido se apile verticalmente */
+    text-align: center; /* Centra el texto */
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto; /* Permite que se ajuste al contenido */
+    max-width: 100%;
+    box-sizing: border-box;
+    min-height: 100vh; /* Esto asegura que ocupe al menos toda la altura de la ventana */
+    padding: 0; /* Elimina el espacio innecesario */
+    margin: 0; /* Asegura que no se desplace */
+    margin-top: -100px; /* Intenta eliminarlo o reducirlo a 0px */
+
+}
+
+
+
+/* Animación de aparición del título */
+@keyframes fadeInTitle {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Título VitaCare */
+h1.title {
+    color: #fff;
+    font-size: 76px; /* Tamaño grande para pantallas grandes */
+    text-align: center; /* Centra el texto horizontalmente */
+    margin-bottom: 0px; /* Espaciado con respecto al contenedor de la imagen */
+    animation: fadeInTitle 2s ease-out; /* Animación suave de aparición */
+    word-wrap: break-word; /* Divide el texto si es necesario */
+    max-width: 90%; /* Limita el ancho del título */
+    padding: 0 10px; /* Añade espacio interno en los lados */
+    line-height: 1.2; /* Espaciado vertical para texto envuelto */
+    margin-top: 85px;
+}
+
+/* Ajustes responsivos para pantallas pequeñas */
+@media (max-width: 768px) {
+    h1.title {
+        font-size: 48px; /* Reduce el tamaño del título en móviles */
+        margin-bottom: 20px; /* Aumenta la separación entre el título y el formulario */
+    }
+}
+
+#registerForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 280px; /* Limita el ancho máximo del formulario */
+    padding: 20px 0px 0px 0px; /* Añade padding-top para crear espacio superior */
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    animation: floatAnimation 2s ease-in-out infinite; /* Animación flotante */
+    margin-top: -18px;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 480px) {
+    .app-container {
+        padding: 20px 0; /* Añade un margen superior e inferior */
+    }
+    #registerForm {
+        width: 80%; /* Más espacio lateral para dispositivos pequeños */
+        max-width: 10px; /* Reduce el ancho máximo del formulario */
+    }
+}
+
+body, html {
+    overflow: auto; /* Habilita el scroll si es necesario */
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Animación de flotación */
+@keyframes floatAnimation {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Espaciado interno de los inputs */
+/* Inputs generales */
+#registerForm input {
+    width: 80%; /* Asegura que todos los inputs tengan el mismo ancho */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+    
+}
+
+/* Contenedor para los campos de contraseña */
+.password-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Icono de mostrar/ocultar contraseña */
+.toggle-icon {
+    position: absolute;
+    right: 45px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+/* Botón de registro */
+#registerButton {
+    width: 50%;
+    padding: 12px;
+    background-color: #e63946;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+#registerButton:hover {
+    background-color: #457b9d;
+}
+
+/* Estilo del mensaje emergente */
+#messageBox {
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #e63946; /* Azul */
+    color: white;
+    padding: 15px 15px;
+    border-radius: 10px; /* Esquinas redondeadas */
+    font-size: 18px;
+    text-align: center;
+    z-index: 1000;
+    opacity: 0; /* Oculto inicialmente */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Animación de suavizado */
+    display: none;
+}
+
+#messageBox.visible {
+    opacity: 1; /* Aparece gradualmente */
+    display: block;
+    transform: translate(-50%, -50%) scale(1.1); /* Leve zoom al aparecer */
+}
+
+#messageBox.visible.hidden {
+    opacity: 0; /* Se desvanece gradualmente */
+    transform: translate(-50%, -50%) scale(0.9); /* Leve contracción al desaparecer */
+}
+
+/* Estilo de los enlaces */
+.links {
+    text-align: center;
+    margin-top: 0px;
+}
+
+.links a {
+    color: #e63946;
+    text-decoration: none;
+    font-size: 18px; /* Tamaño de texto ajustado */
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Ajustes */
+
+/* Para pantallas medianas (tabletas) */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    #registerForm {
+        padding: 15px;
+        max-width: 80%; /* Reducción del tamaño del formulario */
+    }
+
+    #registerButton {
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    #registerForm input {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .back-button {
+        font-size: 14px;
+    }
+}
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    #registerForm {
+        padding: 10px;
+        max-width: 95%; /* Mayor flexibilidad en móviles */
+    }
+
+    #registerButton {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    #registerForm input {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .back-button {
+        font-size: 12px;
+    }
+}
+
+/* Estilo del contenedor de cada input */
+#registerForm div.input-container {
+    width: 80%; /* Se asegura que todos los inputs tengan el mismo contenedor */
+    max-width: 300px; /* Tamaño máximo uniforme */
+}
+.hidden {
+    display: none;
+}
+/* Estilo para el contenedor de la fecha */
+.birthdate-container {
+    position: relative;
+    margin-bottom: 15px;
+    font-size: 12px; /* Reducir el tamaño de fuente de los campos de fecha */
+}
+
+/* Estilo para el input de la fecha */
+#birthdateInput {
+    width: 100%;
+    padding: 8px; /* Reducir el padding */
+    font-size: 12px; /* Reducir el tamaño de la fuente */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Estilo para los selectores de fecha (día, mes, año) */
+#birthdateSelectors {
+    display: flex;
+    gap: 8px; /* Reducir el espacio entre los selectores */
+    margin-top: 10px;
+}
+
+/* Estilo para cada selector (día, mes, año) */
+#birthdateSelectors select {
+    flex: 1;
+    padding: 8px; /* Reducir el padding */
+    font-size: 12px; /* Reducir el tamaño de la fuente */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}

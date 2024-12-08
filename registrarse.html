@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="secregistro.css">
+</head>
+<body>
+   <!-- App Header -->
+   <div class="app-container">
+    <!-- Título VitaCare -->
+    <h1 class="title">VitaCare</h1>
+    <br>
+
+        <form id="registerForm">
+            <h1>Registrarse </h1>
+            <input type="text" id="nameInput" placeholder="Nombre Completo" required>
+            <input type="email" id="emailInput" placeholder="Correo Electrónico" required>
+
+            <!-- Fecha de Nacimiento -->
+            <div class="birthdate-container">
+                <input 
+                    type="text" 
+                    id="birthdateInput" 
+                    placeholder="AA/MM/DD" 
+                    readonly 
+                    onclick="showBirthdateSelectors()" 
+                    required 
+                />
+                <div id="birthdateSelectors" class="hidden">
+                    <!-- Año -->
+                    <select id="yearSelect">
+                        <option value="" disabled selected>Año</option>
+                    </select>
+
+                    <!-- Mes -->
+                    <select id="monthSelect">
+                        <option value="" disabled selected>Mes</option>
+                        <option value="01">Enero</option>
+                        <option value="02">Febrero</option>
+                        <option value="03">Marzo</option>
+                        <option value="04">Abril</option>
+                        <option value="05">Mayo</option>
+                        <option value="06">Junio</option>
+                        <option value="07">Julio</option>
+                        <option value="08">Agosto</option>
+                        <option value="09">Septiembre</option>
+                        <option value="10">Octubre</option>
+                        <option value="11">Noviembre</option>
+                        <option value="12">Diciembre</option>
+                    </select>
+
+                    <!-- Día -->
+                    <select id="daySelect">
+                        <option value="" disabled selected>Día</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Contraseña -->
+            <div class="password-container">
+                <input type="password" id="passwordInput" placeholder="Contraseña" required />
+                <span id="togglePassword" class="toggle-icon">
+                    <i class="fas fa-eye"></i>
+                </span>
+            </div>
+        
+            <!-- Confirmar Contraseña -->
+            <div class="password-container">
+                <input type="password" id="confirmPasswordInput" placeholder="Confirmar Contraseña" required />
+                <span id="toggleConfirmPassword" class="toggle-icon">
+                    <i class="fas fa-eye"></i>
+                </span>
+            </div>
+        
+            <button type="submit" id="registerButton">Registrarse</button>
+            <!-- Botón para regresar al inicio de login -->
+            <div class="links">
+                <p><a href="index.html" id="loginLink">Volver al inicio de sesión</a></p>
+            </div>
+        </form>        
+    
+        <div id="messageBox" class="hidden"></div>
+
+        
+    </div>
+    
+    <script src="seclogin.js"></script>
+</body>
+</html>
